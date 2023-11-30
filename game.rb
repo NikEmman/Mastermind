@@ -1,22 +1,54 @@
-require_relative 'board'
-
+require_relative 'colors'
+require_relative 'player'
+require 'pry-byebug'
+# This is my Game class, rubycop stop pestering me
 class Game
-  def initialize
-    @board = Board.new
+  @board = []
+  @latest_guess = ''
+  @feedback = ''
+  @code
+  @guess
+
+  def user_input
+    @input = gets.chomp
+    # missing validation
   end
 
-  def start
-    @board.user_guess
+  def guess
+    puts 'Enter your guess: '
+    user_input
+    @latest_guess = Player.input(@input)    
+    @guess = @input.chars
   end
 
-  def request_code
-    puts 'Set the code : '
+  def code
+    puts 'Enter the code:'
+    user_input
+    @code = @input.chars
+  end
+
+  def add_guess_to_board
+    @board.push("#{@latest_guess}    #{@feedback}")
+  end
+
+  def feedback
+    @feedback = Player.feedback(@code, @guess)
+    add_guess_to_board
+  end
+
+  def print_board
+    feedback
+    @board.each {|a| puts a}
+  end
+
+  def start 
+   # Player.set_difficulty  #not implemented yet
+    code
+    binding.pry
+    guess
+    print_board
   end
 end
 
-# Should get all the variables in Game class (controller). The board class
-# should consist of a method or two then, probably class methods, that take
-# arguments (some Game variables?) and then print board or w/e
-# Maybe write in main.rb first what is my game flow (.i.e get code,
-# get user_guess, compare to code, check for round/number of guesses etc)
-# and the proceed to write the method/classes as needed
+a= Game.new
+a.start
