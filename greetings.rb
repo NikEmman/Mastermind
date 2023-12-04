@@ -4,8 +4,9 @@ require_relative 'player'
 require_relative 'game'
 # This class is awsome. To_do : Add help function
 class Greetings
+
   def self.say_hi
-    Game.clear_screen
+    clear_screen
     puts 'Welcome to Mastermind. Start with selecting [1] for the CODE-MAKER, [2]for the CODE-BREAKER'
     puts ''
     puts "Then choose how many tries the CODE-BREAKER will have. To enter the code or the guess type
@@ -16,13 +17,18 @@ class Greetings
     gets
   end
 
+  def self.clear_screen
+    system('clear')
+    system('cls')
+  end
+
   def self.help?
     input = gets.chomp
     display_help if input.downcase == 'help'
   end
 
   def self.display_help
-    Game.clear_screen
+    clear_screen
     puts "HOW TO PLAY :"
     puts ''
     puts "Player A (hence A) chooses a code of 4 digits between 1-6 for their corresponding color choice    #{Player.peg(1)}#{Player.peg(2)}#{Player.peg(3)}#{Player.peg(4)}#{Player.peg(5)}#{Player.peg(6)}"

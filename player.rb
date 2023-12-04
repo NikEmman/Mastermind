@@ -32,6 +32,10 @@ class Player
     latest_guess
   end
 
+  def self.create_code
+    4.times.map{rand(1..6)}.join
+  end
+
   def self.feedback(code, guess)
     feedback = ''
     guess_copy = guess.dup
