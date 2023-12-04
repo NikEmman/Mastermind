@@ -10,5 +10,6 @@ require_relative 'game'
 
 # refactor Game, start method should be in main and call a.help?,a.difficulty etc
 
+# help typos
 a = Game.new
 a.start
