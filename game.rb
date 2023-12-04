@@ -4,6 +4,7 @@ require 'pry-byebug'
 # This is my Game class, rubycop stop pestering me
 class Game
   attr_accessor :board, :round
+
   def initialize
     @board = []
     @feedback = []
@@ -16,7 +17,12 @@ class Game
 
   def user_input
     @input = gets.chomp
-    # missing validation
+    if @input.to_i > 1111 && @input.to_i < 6666
+      @input
+    else
+      puts 'Invalid entry, choose 4 numbers between 1 and 6'
+      user_input
+    end
   end
 
   # def difficulty
@@ -35,8 +41,8 @@ class Game
   def code
     puts 'Enter the code: '
     user_input
-    system("clear")
-    system ("cls")
+    system('clear')
+    system('cls')
     @code = @input.chars
     @input = nil
   end
@@ -51,34 +57,34 @@ class Game
     end
   end
 
-  def start 
+  def start
     # difficulty
     code
-    until (win? || end?) do
-    guess
-    feedback
-    print_board
-    @round += 1
+    until win? || end?
+      guess
+      feedback
+      print_board
+      @round += 1
     end
     if win?
-       puts " Congrats, you broke the code!" 
-    else 
-      puts "On no, you lost"
+      puts ' Congrats, you broke the code!'
+    else
+      puts 'On no, you lost'
     end
   end
 
   def end?
-    if @round == @difficulty
-      true
-    end
+    return unless @round == @difficulty
+
+    true
   end
 
   def win?
-    if @guess[@round -1] == @code
-      true
-    end
+    return unless @guess[@round - 1] == @code
+
+    true
   end
 end
 
-a= Game.new
+a = Game.new
 a.start
