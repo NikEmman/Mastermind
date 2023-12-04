@@ -2,19 +2,19 @@
 
 require_relative 'player'
 require_relative 'game'
+require 'pry-byebug'
 # This class is awsome. To_do : Add help function
 class Greetings
 
   def self.say_hi
     clear_screen
-    puts 'Welcome to Mastermind. Start with selecting [1] for the CODE-MAKER, [2]for the CODE-BREAKER'
+    puts 'Welcome to Mastermind. Start with selecting [1] for the CODE-MAKER, [2] for the CODE-BREAKER'
     puts ''
-    puts "Then choose how many tries the CODE-BREAKER will have. To enter the code or the guess type
+    puts "Then choose how many tries the CODE-BREAKER will have. To enter the code or the guess, type
 4 digits between 1 and 6 for their corresponding color choice #{Player.peg(1)}#{Player.peg(2)}#{Player.peg(3)}#{Player.peg(4)}#{Player.peg(5)}#{Player.peg(6)}"
     puts ''
     puts 'If you know the rules, press ENTER to play. If you want to learn how to play, type [help]'
     help?
-    gets
   end
 
   def self.clear_screen
@@ -31,11 +31,12 @@ class Greetings
     clear_screen
     puts "HOW TO PLAY :"
     puts ''
-    puts "Player A (hence A) chooses a code of 4 digits between 1-6 for their corresponding color choice    #{Player.peg(1)}#{Player.peg(2)}#{Player.peg(3)}#{Player.peg(4)}#{Player.peg(5)}#{Player.peg(6)}"
+    puts "First the CODE-MAKER chooses a code of 4 digits between 1-6 for their corresponding color choice    #{Player.peg(1)}#{Player.peg(2)}#{Player.peg(3)}#{Player.peg(4)}#{Player.peg(5)}#{Player.peg(6)}"
     puts ''
-    puts "Then Player B (hence B) tries to find the code. B types his own 4 digit code."
+    puts "Then the CODE-BREAKER tries to find the code. She types her own 4 digit code."
     puts ''
-    puts 'A then provides feedback on how close the guess was to the code.'
+    puts 'The CODE-MAKER then provides feedback on how close the guess was to the code.'
+    puts ''
     puts ''
     puts "Given a code of #{Player.peg(1)}#{Player.peg(1)}#{Player.peg(5)}#{Player.peg(6)}"
     puts ' '
@@ -47,6 +48,7 @@ class Greetings
     puts ' '
     puts 'but at the wrong position'
     puts ' '
-    puts ' ------------->PRESS ENTER TO START THE GAME----------'
+    puts ' ------------- PRESS ENTER TO START THE GAME ----------'
+    gets
   end
 end

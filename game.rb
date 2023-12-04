@@ -42,7 +42,6 @@ class Game
     @pegs[@round] = Player.input(@input)
     @guess[@round] = @input.chars
     @input = nil
-    binding.pry
   end
 
   def code
@@ -99,7 +98,7 @@ class Game
     if win?
       puts 'Congrats, you broke the code!'
     else
-      puts 'On no, you lost'
+      puts "On no, you lost, the code was #{Player.input(@code.join)}"
     end
   end
 
