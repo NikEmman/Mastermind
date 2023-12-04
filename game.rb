@@ -1,4 +1,5 @@
 require_relative 'player'
+require_relative 'colors'
 # This is my Game class, rubycop stop pestering me
 class Game
   def initialize
@@ -10,7 +11,6 @@ class Game
     @difficulty = 12
     @pegs = []
   end
-  PEGS = Player.display_choice
 
   def user_input
     @input = gets.chomp
@@ -44,7 +44,7 @@ class Game
   end
 
   def show_choices
-    puts "Choose 4 of the following: #{PEGS}"
+    puts "Choose 4 of the following: " << "\u278a".red << ' ' << "\u278b".green << ' ' << "\u278c".yellow<< ' ' << "\u278d".blue<< ' ' << "\u278e".pink << ' ' << "\u278f".gray
   end
 
   def feedback
