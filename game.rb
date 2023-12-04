@@ -1,6 +1,4 @@
 require_relative 'player'
-require 'pry-byebug'
-
 # This is my Game class, rubycop stop pestering me
 class Game
   def initialize
@@ -12,10 +10,11 @@ class Game
     @difficulty = 12
     @pegs = []
   end
+  PEGS = Player.display_choice
 
   def user_input
     @input = gets.chomp
-    if @input.to_i > 1111 && @input.to_i < 6666
+    if @input.to_i > 1110 && @input.to_i < 6667
       @input
     else
       puts 'Invalid entry, choose 4 numbers between 1 and 6'
@@ -39,10 +38,13 @@ class Game
   def code
     puts 'Enter the code: '
     user_input
-    system('clear')
-    system('cls')
+    clear_screen
     @code = @input.chars
     @input = nil
+  end
+
+  def show_choices
+    puts "Choose 4 of the following: #{PEGS}"
   end
 
   def feedback
@@ -50,12 +52,20 @@ class Game
   end
 
   def print_board
+    clear_screen
+    show_choices
     (0..@round).each do |i|
       puts "#{@pegs[i]} | #{@feedback[i]}"
     end
   end
 
+  def clear_screen
+    system('clear')
+    system('cls')
+  end
+
   def play
+    show_choices
     until win? || end?
       guess
       feedback
@@ -105,6 +115,7 @@ class Game
     @round = 0
     @difficulty = 12
     @pegs = []
+    clear_screen
     start
   end
 end

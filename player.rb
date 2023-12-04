@@ -1,5 +1,5 @@
-require 'pry-byebug'
 require_relative 'colors'
+# Add computer code choice
 class Player
   @@peg1 = ' ' << "\u278a".red
   @@peg2 = ' ' << "\u278b".green
@@ -10,30 +10,8 @@ class Player
   @@position_hit = "\u25cf".red
   @@color_hit = "\u26ac"
 
-  def self.set_difficulty
-    puts '-----Select the difficulty------'
-    puts "Type [1] for Easy(16 guesses), [2] for Normal(12 guesses),
-         [3] for Hard(8 guesses)"
-    @@difficulty = gets.chomp
-    validate_dificulty
-  end
-
-  def self.validate_dificulty
-    case @@difficulty
-    when '1'
-      16
-    when '2'
-      12
-    when '3'
-      8
-    else
-      puts 'Wrong input, try again'
-      set_difficulty
-    end
-  end
-
   def self.input(input)
-    latest_guess = ''
+    latest_guess = ""
     input.chars.each do |a|
       case a
       when '1'
