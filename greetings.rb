@@ -6,13 +6,12 @@ require_relative 'game'
 class Greetings
   def self.say_hi
     Game.clear_screen
-    puts 'Welcome to Mastermind. In order to play start with selecting who will set the code and who will attempt
-to break it.'
+    puts 'Welcome to Mastermind. Start with selecting [1] for the CODE-MAKER, [2]for the CODE-BREAKER'
     puts ''
-    puts "Then choose how mane tries the code_braker will have. To enter the code or the guess type
+    puts "Then choose how many tries the CODE-BREAKER will have. To enter the code or the guess type
 4 digits between 1 and 6 for their corresponding color choice #{Player.peg(1)}#{Player.peg(2)}#{Player.peg(3)}#{Player.peg(4)}#{Player.peg(5)}#{Player.peg(6)}"
     puts ''
-    puts 'If you know the rules, push ENTER. If you want to learn how to play, type [help]'
+    puts 'If you know the rules, press ENTER to play. If you want to learn how to play, type [help]'
     help?
     gets
   end
@@ -38,7 +37,7 @@ to break it.'
     puts ' '
     puts "The feedback recieved is #{Player.peg(7)}#{Player.peg(8)}"
     puts ' '
-    puts "#{Player.peg(7)} for #{Player.peg(1)} in the second position and #{Player.peg(8)} for #{Player.peg(5)} which exists in the code"
+    puts "#{Player.peg(7)} for #{Player.peg(1)}  in the second position and #{Player.peg(8)} for #{Player.peg(5)}  which exists in the code"
     puts ' '
     puts 'but at the wrong position'
     puts ' '
