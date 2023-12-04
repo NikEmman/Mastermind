@@ -1,4 +1,5 @@
 require_relative 'colors'
+require 'pry-byebug'
 # Add computer code choice
 class Player
   @@peg1 = ' ' << "\u278a".red
@@ -44,6 +45,11 @@ class Player
       feedback << @@color_hit if code.include?(a)
     end
     feedback
+  end
+  
+  def self.peg(int)
+    peg_arr = [@@peg1,@@peg2,@@peg3,@@peg4,@@peg5,@@peg6,@@position_hit,@@color_hit]
+    peg_arr[int-1]
   end
 
   def self.display_choice

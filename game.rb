@@ -1,5 +1,6 @@
 require_relative 'player'
 require_relative 'colors'
+require_relative 'greetings'
 # This is my Game class, rubycop stop pestering me
 class Game
   def initialize
@@ -59,7 +60,7 @@ class Game
     end
   end
 
-  def clear_screen
+  def self.clear_screen
     system('clear')
     system('cls')
   end
@@ -100,6 +101,7 @@ class Game
   end
 
   def start
+    Greetings.say_hi
     difficulty
     code
     play
