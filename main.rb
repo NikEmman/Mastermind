@@ -18,4 +18,3 @@ require_relative 'game'
 
 a = Game.new
 a.start
-

@@ -3,8 +3,6 @@ require 'pry-byebug'
 
 # This is my Game class, rubycop stop pestering me
 class Game
-  attr_accessor :board, :round
-
   def initialize
     @board = []
     @feedback = []
@@ -25,10 +23,10 @@ class Game
     end
   end
 
-  # def difficulty
-  #   puts "Select number of guesses: 16 for easy, 12 for normal, 8 for hard"
-  #   @difficulty = gets.chomp.to_i
-  # end
+  def difficulty
+    puts 'Select number of guesses: 16 for easy, 12 for normal, 8 for hard'
+    @difficulty = gets.chomp.to_i
+  end
 
   def guess
     puts 'Enter your guess: '
@@ -57,17 +55,18 @@ class Game
     end
   end
 
-  def start
-    # difficulty
-    code
+  def play
     until win? || end?
       guess
       feedback
       print_board
       @round += 1
     end
+  end
+
+  def game_end
     if win?
-      puts ' Congrats, you broke the code!'
+      puts 'Congrats, you broke the code!'
     else
       puts 'On no, you lost'
     end
@@ -84,7 +83,28 @@ class Game
 
     true
   end
-end
 
-a = Game.new
-a.start
+  def reset
+    puts 'Do you want to play again? [Y/N] :'
+    reset_game if gets.chomp.upcase == 'Y'
+  end
+
+  def start
+    difficulty
+    code
+    play
+    game_end
+    reset
+  end
+
+  def reset_game
+    @board = []
+    @feedback = []
+    @code = []
+    @guess = []
+    @round = 0
+    @difficulty = 12
+    @pegs = []
+    start
+  end
+end

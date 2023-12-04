@@ -53,7 +53,7 @@ class Player
     latest_guess
   end
 
-  def self.feedback(code,guess)
+  def self.feedback(code, guess)
     feedback = ''
     guess_copy = guess.dup
     code.each_with_index do |b, i|
