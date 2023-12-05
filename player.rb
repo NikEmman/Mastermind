@@ -40,8 +40,8 @@ class Player
     feedback = ''
     position_hits = 0
     color_hits = 0
-    guess_copy = guess
-    code_copy = code
+    guess_copy = guess.dup
+    code_copy = code.dup
   
     # First pass to check for position hits
     guess_copy.each_with_index do |guess_peg, index|

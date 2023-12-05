@@ -16,7 +16,7 @@ class Game
   end
   
   def code_maker?
-    puts 'Type [1] to be the '+'CODE-MAKER'.yellow+', [2] to be the '+'CODE-BREAKER'.blue
+    puts 'Type [1] to be the ' + 'CODE-MAKER'.yellow + ', [2] to be the ' + 'CODE-BREAKER'.blue
     a = gets.chomp.to_i
     @player = a if a == 1
   end
