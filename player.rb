@@ -38,16 +38,31 @@ class Player
 
   def self.feedback(code, guess)
     feedback = ''
-    guess_copy = guess.dup
-    code.each_with_index do |b, i|
-      if guess_copy[i] == b
-        feedback << @@position_hit
-        guess_copy[i] = nil
+    position_hits = 0
+    color_hits = 0
+    guess_copy = guess
+    code_copy = code
+  
+    # First pass to check for position hits
+    guess_copy.each_with_index do |guess_peg, index|
+      if guess_peg == code_copy[index]
+        position_hits += 1
+        guess_copy[index] = nil
+        code_copy[index] = nil
       end
     end
-    guess_copy.uniq.each do |a|
-      feedback << @@color_hit if code.include?(a)
+  
+    # Second pass to check for color hits
+    guess_copy.compact.each do |guess_peg|
+      if code_copy.compact.include?(guess_peg)
+        color_hits += 1
+        code_copy[code_copy.index(guess_peg)] = nil
+      end
     end
+  
+    # create feedback string
+    feedback << @@position_hit * position_hits
+    feedback << @@color_hit * color_hits
     feedback
   end
   

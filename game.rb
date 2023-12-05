@@ -16,7 +16,7 @@ class Game
   end
   
   def code_maker?
-    puts 'Type [1] to be the CODE-MAKER, [2] to be the CODE-BRAKER'
+    puts 'Type [1] to be the '+'CODE-MAKER'.yellow+', [2] to be the '+'CODE-BREAKER'.blue
     a = gets.chomp.to_i
     @player = a if a == 1
   end
@@ -32,7 +32,7 @@ class Game
   end
 
   def difficulty
-    puts 'Select number of guesses: 16 for easy, 12 for normal, 8 for hard'
+    puts 'Select number of guesses: 16 for '+ 'easy'.blue+', 12 for ' +'normal'.green+', 8 for ' +'hard'.red
     @difficulty = gets.chomp.to_i
   end
 
