@@ -34,6 +34,9 @@ class Game
   def difficulty
     puts 'Select number of guesses: 16 for '+ 'easy'.blue+', 12 for ' +'normal'.green+', 8 for ' +'hard'.red
     @difficulty = gets.chomp.to_i
+    unless [8,12,16].include?(@dificulty)
+      @dificulty
+    end
   end
 
   def guess

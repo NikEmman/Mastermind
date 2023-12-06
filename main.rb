@@ -4,8 +4,6 @@ require_relative 'game'
 
 # BUG_LIST
 
-# wrong feedback, code = 5212  , guess = 5211, try #uniq before guess_copy[i] = nil
-
 # at difficulty prompt do a validation like is_int? or w/e
 
 # refactor Game, start method should be in main and call a.help?,a.difficulty etc
@@ -23,6 +21,5 @@ class Main
         @@new_game = Game.new
         @@new_game.start
     end
-    
 end
 Main.start
