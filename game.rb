@@ -4,6 +4,7 @@ require_relative 'greetings'
 require 'pry-byebug'
 # This is my Game class, rubycop stop pestering me
 class Game
+  VALID_CHOICE = ["1","2","3","4","5","6"]
   def initialize
     @board = []
     @feedback = []
@@ -23,12 +24,11 @@ class Game
 
   def user_input
     @input = gets.chomp
-    if @input.to_i > 1110 && @input.to_i < 6667
-      @input
-    else
+    unless (@input.chars.all? { |e| VALID_CHOICE.include?(e) } && @input.chars.size == 4)
       puts 'Invalid entry, choose 4 numbers between 1 and 6'
       user_input
     end
+    
   end
 
   def difficulty
