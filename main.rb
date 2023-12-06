@@ -4,9 +4,6 @@ require_relative 'game'
 
 # BUG_LIST
 
-# at difficulty prompt do a validation like is_int? or w/e
-
-# refactor Game, start method should be in main and call a.help?,a.difficulty etc
 
 #at the end check for pry-byebugs and redundant methods/variables
 class Main
