@@ -11,7 +11,4 @@ class Computer
 
     # then pick the next number in the array and do the same. Should give a win in 5 moves 
 
-    def solve
-
-    end
 end

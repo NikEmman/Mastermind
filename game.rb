@@ -32,7 +32,7 @@ class Game
   end
 
   def difficulty
-    puts 'Select number of guesses: 16 for ' + 'easy'.blue +', 12 for ' +'normal'.green +', 8 for ' +'hard'.red
+    puts 'Select number of guesses: 16 for ' + 'easy'.blue + ', 12 for ' +'normal'.green + ', 8 for ' + 'hard'.red
     @difficulty = gets.chomp.to_i
     unless [8,12,16].include?(@dificulty)
       @dificulty
@@ -40,8 +40,12 @@ class Game
   end
 
   def guess
-    puts 'Enter your guess: '
-    user_input
+    if @player == 2
+      puts 'Enter your guess: '
+      user_input
+    else
+      gen_code
+    end
     @pegs[@round] = Player.input(@input)
     @guess[@round] = @input.chars
     @input = nil
@@ -54,8 +58,13 @@ class Game
 
   def gen_code
     @input = Player.create_code
-    @code = @input.chars
-    @input = nil
+    if @player == 2 
+       @code = @input.chars
+       @input = nil
+    else
+       @guess = @input.chars
+    end
+    
   end
 
   def set_code
@@ -79,6 +88,10 @@ class Game
     show_choices
     (0..@round).each do |i|
       puts "#{@pegs[i]} | #{@feedback[i]}"
+    end
+    if @player == 1
+      puts "Hit enter for computer's next guess"
+      gets
     end
   end
 
