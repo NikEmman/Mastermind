@@ -116,7 +116,7 @@ class Game
 
   def reset
     puts 'Do you want to play again? [Y/N] :'
-    reset_game if gets.chomp.upcase == 'Y'
+    true if gets.chomp.upcase == 'Y'
   end
 
   def start
@@ -125,19 +125,5 @@ class Game
     code
     play
     game_end
-    reset
-  end
-
-  def reset_game
-    @board = []
-    @feedback = []
-    @code = []
-    @guess = []
-    @round = 0
-    @difficulty = 12
-    @pegs = []
-    @player = 2
-    clear_screen
-    start
   end
 end
