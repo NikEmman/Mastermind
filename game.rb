@@ -38,8 +38,8 @@ class Game
   def difficulty
     puts SELECT_GUESSES
     @difficulty = gets.chomp.to_i
-    unless [8,12,16].include?(@dificulty)
-      @dificulty
+    unless [8,12,16].include?(@difficulty)
+      @difficulty
     end
   end
 
