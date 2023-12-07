@@ -94,7 +94,7 @@ class Game
       puts "#{@pegs[i]} | #{@feedback[i]}"
     end
     if @player == 1
-      puts "Hit enter for computer's next guess"
+      puts "Hit " << "ENTER".red << " for computer's next guess"
       gets
     end
   end

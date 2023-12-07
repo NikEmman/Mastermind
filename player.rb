@@ -1,6 +1,5 @@
 require_relative 'colors'
-require 'pry-byebug'
-# Add computer code choice
+
 class Player
   @@peg1 = ' ' << "\u278a".red
   @@peg2 = ' ' << "\u278b".green
