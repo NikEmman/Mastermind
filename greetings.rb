@@ -8,13 +8,15 @@ require 'pry-byebug'
 class Greetings
   CODE_BREAKER = 'CODE-BREAKER'.blue
   CODE_MAKER = 'CODE-MAKER'.yellow
-  WELCOME_TEXT = "Welcome to Mastermind. Start with selecting [1] for the #{CODE_MAKER}, [2] for the #{CODE_BREAKER}
+  WELCOME_TEXT = "----------------------- WELCOME TO MASTERMIND ---------------------- 
+  
+When the game starts, select [1] for the #{CODE_MAKER} or [2] for the #{CODE_BREAKER}
 
-Then choose how many tries the #{CODE_BREAKER} will have. To enter the code or the guess, type
+Then choose how many tries the #{CODE_BREAKER} will have. To enter the code or the guess, 
 
-4 digits between 1 and 6 for their corresponding color choice #{Player.peg(1)}#{Player.peg(2)}#{Player.peg(3)}#{Player.peg(4)}#{Player.peg(5)}#{Player.peg(6)}
+type 4 digits between 1 and 6 for their corresponding color choice #{Player.peg(1)}#{Player.peg(2)}#{Player.peg(3)}#{Player.peg(4)}#{Player.peg(5)}#{Player.peg(6)}
 
-If you know the rules, press ENTER to play. If you want to learn how to play, type [help]"
+If you know the rules, press " << "ENTER".red << " to play. If you want to learn how to play, type [help]"
 
   HELP_TEXT = "HOW TO PLAY :
 

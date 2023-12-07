@@ -5,19 +5,24 @@ require 'pry-byebug'
 # This is my Game class, rubycop stop pestering me
 class Game
   VALID_CHOICE = ["1","2","3","4","5","6"]
+  CODE_BREAKER = 'CODE-BREAKER'.blue
+  CODE_MAKER = 'CODE-MAKER'.yellow #{CODE_BREAKER}
+  SELECT_GUESSES = 'Select number of guesses: 16 for ' << 'easy'.blue << ', 12 for ' << 'normal'.green << ', 8 for ' << 'hard'.red
+  CHOOSE_FOUR = "Choose 4 of the following: " << "\u278a".red << ' ' << "\u278b".green << ' ' << "\u278c".yellow<< ' ' << "\u278d".blue<< ' ' << "\u278e".pink << ' ' << "\u278f".gray
+
   def initialize
     @board = []
     @feedback = []
     @code = []
     @guess = []
     @round = 0
-    @difficulty = 12
+    @difficulty
     @pegs = []
     @player = 2
   end
   
   def code_maker?
-    puts 'Type [1] to be the ' + 'CODE-MAKER'.yellow + ', [2] to be the ' + 'CODE-BREAKER'.blue
+    puts "Type [1] to be the #{CODE_MAKER}, [2] to be the #{CODE_BREAKER}"
     a = gets.chomp.to_i
     @player = a if a == 1
   end
@@ -25,14 +30,14 @@ class Game
   def user_input
     @input = gets.chomp
     unless (@input.chars.all? { |e| VALID_CHOICE.include?(e) } && @input.chars.size == 4)
-      puts 'Invalid entry, choose 4 numbers between 1 and 6'
+      puts 'Invalid code, choose 4 numbers between 1 and 6'
       user_input
     end
     
   end
 
   def difficulty
-    puts 'Select number of guesses: 16 for ' + 'easy'.blue + ', 12 for ' +'normal'.green + ', 8 for ' + 'hard'.red
+    puts SELECT_GUESSES
     @difficulty = gets.chomp.to_i
     unless [8,12,16].include?(@dificulty)
       @dificulty
@@ -54,7 +59,7 @@ class Game
   def code
     code_maker?
     @player==1 ? set_code : gen_code
-    end
+  end
 
   def gen_code
     @input = Player.create_code
@@ -76,7 +81,8 @@ class Game
   end
 
   def show_choices
-    puts "Choose 4 of the following: " << "\u278a".red << ' ' << "\u278b".green << ' ' << "\u278c".yellow<< ' ' << "\u278d".blue<< ' ' << "\u278e".pink << ' ' << "\u278f".gray
+    clear_screen
+    puts CHOOSE_FOUR
   end
 
   def feedback
@@ -84,7 +90,6 @@ class Game
   end
 
   def print_board
-    clear_screen
     show_choices
     (0..@round).each do |i|
       puts "#{@pegs[i]} | #{@feedback[i]}"
@@ -112,9 +117,9 @@ class Game
 
   def game_end
     if win?
-      puts 'Congrats, you broke the code!'
+      puts "Amazing, the  #{CODE_BREAKER} won!"
     else
-      puts "On no, you lost, the code was #{Player.input(@code.join)}"
+      puts "The #{CODE_BREAKER} lost, the code was #{Player.input(@code.join)}"
     end
   end
 
