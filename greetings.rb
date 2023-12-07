@@ -1,10 +1,7 @@
-# frozen_string_literal: false
-
 require_relative 'player'
 require_relative 'game'
 require_relative 'colors'
-require 'pry-byebug'
-# This class is awsome. To_do : Add help function
+
 class Greetings
   CODE_BREAKER = 'CODE-BREAKER'.blue
   CODE_MAKER = 'CODE-MAKER'.yellow

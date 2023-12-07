@@ -1,8 +1,7 @@
 require_relative 'player'
 require_relative 'colors'
 require_relative 'greetings'
-require 'pry-byebug'
-# This is my Game class, rubycop stop pestering me
+
 class Game
   VALID_CHOICE = ["1","2","3","4","5","6"]
   CODE_BREAKER = 'CODE-BREAKER'.blue

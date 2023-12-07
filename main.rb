@@ -1,11 +1,5 @@
 require_relative 'game'
 
-# ask for who puts code and who breaks it (human and "AI")
-
-# BUG_LIST
-
-
-#at the end check for pry-byebugs and redundant methods/variables
 class Main
     @@new_game = Game.new
     def self.start
